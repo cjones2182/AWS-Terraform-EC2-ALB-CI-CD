@@ -1,0 +1,5 @@
+This repository contains a Terraform template for a VPC, an Application Load Balancer, and an EC2 Web Server.
+
+The ALB uses two public subnets and forwards HTTP traffic to an EC2 instance in a private subnet. The User Data installs Apache and shows a test page over port 80 using a NAT Gateway. 
+
+The file was validated by applying.

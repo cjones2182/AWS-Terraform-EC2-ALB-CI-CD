@@ -1,5 +1,41 @@
-This repository contains a Terraform template for a VPC, an Application Load Balancer, and an EC2 Web Server.
+# AWS Terraform — EC2, ALB & CodeBuild
 
-The ALB uses two public subnets and forwards HTTP traffic to an EC2 instance in a private subnet. The User Data installs Apache and shows a test page over port 80 using a NAT Gateway. 
+Deploys an AWS environment using Terraform, with GitHub as the source for CodeBuild.
 
-The file was validated by applying.
+## Resources
+- VPC with public and private subnets across two Availability Zones
+- Internet gateway, NAT gateway, and route tables
+- EC2 instances and security groups
+- Application Load Balancer, listener, and target group
+- CodeBuild project and IAM service role
+
+## Files
+- `main.tf` — AWS infrastructure
+- `variables.tf` — Terraform input variables
+- `outputs.tf` — Terraform outputs
+- `buildspec.yaml` — CodeBuild Terraform deployment commands
+
+## Deploy
+Configure AWS credentials, then run:
+
+bash
+terraform init
+terraform plan
+terraform apply
+```
+
+To update the environment, edit the Terraform configuration and run:
+
+bash
+terraform plan
+terraform apply
+```
+
+To remove the environment:
+
+bash
+terraform destroy
+
+
+## CodeBuild
+After pushing changes to GitHub, start a CodeBuild build to run the Terraform commands in `buildspec.yaml`.

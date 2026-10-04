@@ -1,0 +1,13 @@
+version 0.2
+
+phases:
+  pre-build:
+    commands:
+      - terraform fmt -recursive
+      - terraform init -input=false
+      - terraform validate -input=false
+  
+  build:
+    commands:
+      - terraform plan -input=false -auto-approve
+      - terraform apply -input=false

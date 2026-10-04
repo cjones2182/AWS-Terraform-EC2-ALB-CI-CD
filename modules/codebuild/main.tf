@@ -63,12 +63,12 @@ resource "aws_codebuild_project" "ec2_codebuild" {
 
   source {
     type            = "GITHUB"
-    location        = "https://github.com/mitchellh/packer.git"
-    git_clone_depth = 1
+    location        = "https://github.com/cjones2182/AWS-Terraform-EC2-ALB-CI-CD.git"
+    buildspec = "buildspec.yaml"
   }
 
   tags = {
-    Environment = "Test"
+    name = "ec2-codebuild"
   }
 }
 
